@@ -1,8 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
-
-import { parseExcusa } from "./parseExcusa";               
-import { useGenerarExcusa } from "./useExcusa";   
+import { parseExcusa } from "./parseExcusa";
+import { useGenerarExcusa } from "./useExcusa";
 
 const MODEL = "gemini-2.0-flash";
 
@@ -10,13 +9,30 @@ const excusaBase = ref("");
 const nombreLlegador = ref("");
 const fechaLlegada = ref("");
 const horaLlegada = ref("");
-const model = ref(null);              
+const model = ref(null);
 const excusaGenerada = ref("");
 const isGenerating = ref(false);
 
-const options = ["Clásica", "Médica", "Judicial", "Laboral", "Informal"];
+const options = ["clasica", "medica", "judicial", "laboral", "informal"];
 
 const excusaFormateada = computed(() => parseExcusa(excusaGenerada.value));
+
+const estilosPagina = computed(() => {
+    const paddingMap = {
+        medica: "210px",
+        judicial: "215px", 
+        informal: "190px",        
+        clasica: "130px",  
+        laboral: "130px"
+    };
+
+    const topSpace = paddingMap[model.value] || "130px";
+
+    return {
+        backgroundImage: model.value ? `url(/fondos/${model.value}.png)` : 'none',
+        paddingTop: topSpace 
+    };
+});
 
 function validateInputs() {
     if (!excusaBase.value?.trim()) return "Por favor escribe la razón de la excusa";
@@ -35,7 +51,7 @@ async function generar() {
         nombreLlegador,
         fechaLlegada,
         horaLlegada,
-        model,              
+        model,
         validateInputs,
         excusaGenerada,
         isGenerating
@@ -46,7 +62,7 @@ async function generar() {
 <template>
     <div class="container">
         <div class="dad">
-            <h2 class="titulo">Generador de excusas por llegar tarde</h2>
+            <h2 class="titulo">Generador de excusas</h2>
 
             <q-input rounded outlined v-model="excusaBase" label="Describe la excusa"
                 placeholder="Ejemplo: un perro me mordió" />
@@ -94,83 +110,10 @@ async function generar() {
                 :disable="isGenerating" @click="generar" />
         </div>
 
-        <div class="certificado-container" v-if="excusaGenerada" v-html="excusaFormateada"></div>
-
-        <div v-if="excusaGenerada" class="firma-sello">
-            <p>🖊 Firma: Lic. Ridículo F. Absurdo</p>
-            <p>📅 Fecha: {{ new Date().toLocaleDateString() }}</p>
-            <p>🔖 Sello Ficticio: Oficina Nacional de Excusas Increíbles</p>
+        <div class="pagina-a4" v-if="excusaGenerada" :style="estilosPagina">
+            <div class="certificado-container" v-html="excusaFormateada"></div>
         </div>
     </div>
 </template>
 
-<style scoped>
-.certificado-container {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 30px 40px;
-    border: 4px double #444;
-    background: white;
-    font-family: "Courier New", Courier, monospace;
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
-    white-space: normal;
-    color: #222;
-    min-height: 400px;
-}
-
-.titulo {
-    font-size: 3em;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(90deg, red, blue);
-    -webkit-background-clip: text;
-    /* Necesario para Chrome/Safari */
-    background-clip: text;
-    color: transparent;
-    text-align: center;
-    line-height: 3rem;
-}
-
-p {
-    margin: 0.3rem 0;
-    line-height: 1.5rem;
-}
-
-.firma-sello {
-    max-width: 700px;
-    margin: 20px auto 40px auto;
-    padding-top: 15px;
-    border-top: 2px solid #ccc;
-    font-style: italic;
-    color: #666;
-    font-size: 0.9rem;
-    text-align: right;
-}
-
-.q-pa-md {
-    padding: 0;
-}
-
-.dad {
-    display: grid;
-    width: 80%;
-    min-width: 320px;
-    gap: 10px;
-    padding: 15px;
-    box-sizing: border-box;
-    border: 2px solid #ddd;
-    border-radius: 12px;
-    background: white;
-    margin-top: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.container {
-    display: grid;
-    justify-items: center;
-    align-self: center;
-}
-
-.fecha {
-    margin-top: 10px;
-}
-</style>
+<style scoped src="../assets/estilosCertificado.css"></style>

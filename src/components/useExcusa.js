@@ -53,13 +53,13 @@ export function useGenerarExcusa(MODEL) {
                     1. **Argumentativo y narrativo**: La excusa debe explicar de manera absurda pero lógica dentro del caos la razón del retraso. 
                     Debe tener: - **Causa**: qué pasó y por qué detuvo a la persona. - **Desarrollo**: desarrolla una historia en un contexto colombiano ojala santandereano
                     o antioqueño, con personajes reales, imaginarios, y realistas o no - **Testigos y petición**: personajes estrafalarios que confirmen los hechos y se pida
-                    que se excuse la tardanza. 
+                    que se excuse la tardanza. procura que sea cual sea el estilo siempre tenga una firma
                     2. **Humor directo y explosivo**: chistes callejeros, comparaciones ridículas de ves en cuando
                     (“más peligroso que tocer con diarrea”, “caótico como un carrito de helados sobre Islandia”), lenguaje coloquial y exagerado.
                     Nada de florituras aburridas. 
                     3. **inventa detalles** : crea una historia chistosa, entendible, pero que no sea creible, parte vital. 
                     4. **Métricas absurdas y observaciones técnicas**: lo que haga falta para argumentar el retraso. 
-                    5. **Narrativa corta**: no superes las 20 lineas, el objetivo es que no sea canson y extenso de leer
+                    5. **Narrativa corta**: no superes las 19 lineas, el objetivo es que no sea canson y extenso de leer
                     flow natural, exagerada y disparatada, que haga reír desde la primera línea. 
                     6. **No dejes placeholders ni uses "**"**, inventa absolutamente todo. 
                     Intenta usar lo menos posible el doble asterisco "**". y si no tienes datos INVENTALOS, no dejes []
