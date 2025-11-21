@@ -1,0 +1,138 @@
+.titulo {
+    font-size: 2em;
+    font-family: 'Times New Roman', Times, serif;
+    background: linear-gradient(90deg, #0d35e7, #e63509);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    line-height: 2.5rem;
+    margin-bottom: 25px;
+}
+
+.q-pa-md {
+    padding: 0;
+}
+
+.dad {
+    display: grid;
+    width: 80%;
+    min-width: 320px;
+    gap: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    background: white;
+    margin-top: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.container {
+    display: grid;
+    justify-items: center;
+    align-self: center;
+}
+
+.fecha {
+    margin-top: 10px;
+}
+
+.pagina-a4 {
+    width: 794px;
+    height: 1123px;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding-bottom: 100px;
+    padding-left: 70px;
+    padding-right: 70px;
+    margin: 25px auto;
+    box-sizing: border-box;
+    position: relative;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: padding-top 0.3s ease;
+}
+
+.certificado-container {
+    flex: 1;
+    font-family: 'Times New Roman', Times, serif;
+    color: #222; 
+    white-space: normal;
+    background: transparent;
+    overflow: hidden;
+    font-size: 13.5pt; 
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-align: left; 
+    text-shadow: none;
+    padding: 10px 0;
+}
+
+.certificado-container :deep(.titulo-ia) {
+    font-size: 1.4em !important;
+    text-align: center;
+    line-height: 1.2;
+    font-weight: bold;
+    color: #000;
+    margin: 0 auto 20px auto; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    background: none;
+}
+
+.certificado-container :deep(p),
+.certificado-container :deep(.excusa-parrafo),
+.certificado-container :deep(.excusa-campo) {
+    margin: 0;       
+    padding: 0 0 2px 0;
+    line-height: 1.4; 
+    text-align: justify; 
+}
+
+.certificado-container :deep(strong),
+.certificado-container :deep(b) {
+    color: #000;
+}
+
+.certificado-container :deep(.excusa-list) {
+    margin: 5px 0 5px 25px;
+    padding: 0;
+    text-align: left;
+}
+
+.certificado-container :deep(li) {
+    margin-bottom: 2px;
+}
+
+@media print {
+    .dad { display: none; }
+    .container { display: block; }
+
+    .pagina-a4 {
+        page-break-after: always;
+        box-shadow: none;
+        margin: 0;
+        width: 210mm;
+        min-height: 297mm;
+        max-height: 297mm;
+        padding: 20mm;
+        background-size: cover !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        overflow: visible;
+    }
+
+    .certificado-container {
+        font-size: 13pt !important; 
+        line-height: 1.4 !important;
+        max-height: 100%;
+        overflow: visible;
+    }
+}
